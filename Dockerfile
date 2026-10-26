@@ -6,8 +6,7 @@ RUN npm install -g pnpm
 
 COPY package.json pnpm-lock.yaml* .npmrc* ./
 
-# Pasar la variable de entorno directamente en la instrucción RUN:
-RUN PNPM_CONFIG_IGNORE_BUILDS=true pnpm install --no-frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 
 COPY . .
 
