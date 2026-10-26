@@ -2,16 +2,17 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Instalar pnpm y copiar dependencias
+# Instalar pnpm
 RUN npm install -g pnpm
 
 COPY package.json pnpm-lock.yaml* ./
-# Ignorar
-RUN pnpm install --config.ignore-scripts=false
+
+# Usar --ignore-scripts evita que pnpm v10 se detenga por ERR_PNPM_IGNORED_BUILDS
+RUN pnpm install --ignore-scripts
 
 COPY . .
 
-# Compilar proyecto de Medusa v2
+# Compilar el proyecto
 RUN pnpm build
 
 EXPOSE 9000
