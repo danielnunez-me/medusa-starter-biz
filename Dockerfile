@@ -5,10 +5,11 @@ WORKDIR /app
 # Instalar pnpm
 RUN npm install -g pnpm
 
-COPY package.json pnpm-lock.yaml* ./
+# COPIAR .npmrc JUNTO A LOS PACKAGE.JSON
+COPY package.json pnpm-lock.yaml* .npmrc* ./
 
-# Usar --ignore-scripts evita que pnpm v10 se detenga por ERR_PNPM_IGNORED_BUILDS
-RUN pnpm install --ignore-scripts
+# Instalar dependencias usando la configuración del .npmrc
+RUN pnpm install --no-frozen-lockfile
 
 COPY . .
 
