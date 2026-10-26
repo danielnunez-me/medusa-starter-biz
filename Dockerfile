@@ -2,15 +2,12 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Instalar pnpm
 RUN npm install -g pnpm
-
-# Desactivar el bloqueo de scripts de pnpm 10
-ENV PNPM_CONFIG_IGNORE_BUILDS=true
 
 COPY package.json pnpm-lock.yaml* .npmrc* ./
 
-RUN pnpm install --no-frozen-lockfile
+# Pasar la variable de entorno directamente en la instrucción RUN:
+RUN PNPM_CONFIG_IGNORE_BUILDS=true pnpm install --no-frozen-lockfile
 
 COPY . .
 
