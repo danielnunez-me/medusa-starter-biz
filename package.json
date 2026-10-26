@@ -1,4 +1,4 @@
-{
+2{
   "name": "medusa-starter-default",
   "version": "0.0.1",
   "description": "A starter for Medusa projects.",
@@ -46,15 +46,5 @@
   },
   "engines": {
     "node": ">=20"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@medusajs/telemetry",
-      "@medusajs/dashboard",
-      "@swc/core",
-      "esbuild",
-      "msgpackr-extract",
-      "protobufjs"
-    ]
   }
 }
