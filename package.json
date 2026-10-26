@@ -46,5 +46,15 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@medusajs/telemetry",
+      "@medusajs/dashboard",
+      "@swc/core",
+      "esbuild",
+      "msgpackr-extract",
+      "protobufjs"
+    ]
   }
 }
